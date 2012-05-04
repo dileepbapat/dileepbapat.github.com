@@ -9,15 +9,37 @@
 </head> 
 <body> 
 
-<div data-role="page">
+<div data-role="page" data-theme="c">
 
 	<div data-role="header">
-		<h1>My Title</h1>
+		<h1>Welcome</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<p>Hello world</p>		
-	</div><!-- /content -->
+		<p>Enter place</p>	
+		<ul data-role="listview" data-inset="true" data-filter="true">
+			<li><a href="#">Bangalore</a></li>
+			<li><a href="#">Chicago</a></li>
+			<li><a href="#">SFO</a></li>
+			<li><a href="#">Pune</a></li>
+			<li><a href="#">Chennai</a></li>
+		</ul>		
+	</div>
+	
+	<form>
+	   <label for="slider-0">Rating:</label>
+	   <input type="range" name="slider" id="slider-0" value="3" min="0" max="5"  />
+	</form>
+	
+	<a href="#" data-role="button" data-icon="star" data-theme="d">Submit</a>
+	
+	
+	<a href="multi.html">Pages</a>
+	<a href="other.html">About</a>
+	
+	<li><a href="other.html" data-rel="dialog">Contact</a></li>
+	
+	<!-- /content -->
 
 </div><!-- /page -->
 
