@@ -1,0 +1,19 @@
+---
+layout: page
+title: Reading list
+header: Reading list
+group: navigation
+---
+{% include JB/setup %}
+
+<ul>
+{% assign pages_list = site.links %}
+{% include JB/pages_list %}
+</ul>
+
+{% for link in site.data.links %}
+    <a href="{{link.url}}">{{link.name}}</a>
+    <blockquote>
+        {{link.info}}
+    </blockquote>
+{% endfor %}

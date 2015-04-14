@@ -2,8 +2,8 @@
 layout: post
 title: "Docker Getting started"
 description: "Explains how to build docker image from scratch."
-category:
-tags: [docker minimal lxc ubuntu]
+category: infra
+tags: [docker, lxc, ubuntu]
 ---
 >   Docker Series Part One
 

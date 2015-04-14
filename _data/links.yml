@@ -1,0 +1,28 @@
+- name: Language Design - Less is more
+  url: http://blog.ploeh.dk/2015/04/13/less-is-more-language-features/
+  info: |
+    Talks about language features that limit what programmer can do.
+    Less is more in-terms of possible language instructions.
+
+- name: Lets build computer bottom up (video)
+  url: http://confreaks.tv/videos/gogaruco2014-let-s-build-a-computer
+  info: |
+    Building computers based on nand gate, inspired by book
+
+- name: Clojure (functional) implementation refactoring case study from Martin Fowler's book
+  url: http://adambard.com/blog/refactoring-refactored/
+  info: |
+    Good read for people starting functional programming and, or from java world. Gives good
+    anchor points to compare and contrast the functional style. Though original case study
+    lacking advanced application of functional approach.
+
+- name: Linux performance tuning
+  url: http://www.socallinuxexpo.org/sites/default/files/presentations/scalelinuxperformance-130224171331-phpapp01.pdf
+  info: |
+    Nice and complete overview of performance tuning aspects on linux system.
+
+- name: Leaky abstractions
+  url: http://www.joelonsoftware.com/articles/LeakyAbstractions.html
+  info: |
+    Talks about abstraction causing performance issues, not service original intent etc.
+    illustrates his point with TCP transmission and worst case how useful the data transfer is.
