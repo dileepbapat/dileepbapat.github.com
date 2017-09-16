@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lets teach machines! day 2</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Helvetica'; 
+        font-size: 50px;
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content {
+        font-size: .5em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Lets teach machines!
+  >> ##### or may be first lets learn how to teach machines
+
+---
+
+# Agenda
+
+1. Linear regression
+2. Logistic regression
+3. Hands on (after lunch)
+
+---
+
+##Examples
+
+* Adventure park review → foot fall in the park
+* Competitor advertising → decreased price_list (if the get it right)
+* Car recency → better price 
+* Collectible car 
+  * 1/ number of cars produced  → price 
+  * Older → better price
+* House 
+  * Bigger the house → more price
+  * Utilities → price
+  * Parking → price
+---
+#Fit the line
+
+  !["Linear data"](images/linear1.png)
+---
+ 
+ !["Linear data"](images/linear2.png)
+---
+ #Looks familiar?
+ !["Equation"](images/weight_formula.png)
+---
+ #Looks familiar?
+ !["Neuron in nn"](images/neuron.png)
+        * Its equivalent to one layer of neural network, except neuron might
+        have activation functions.
+---
+# Optimization / learning
+* Start with some random distributed weights [w0, w1]
+    * Compute RSS square(y-f(x))
+    * update w <- w + learning_rate * RSS
+    * repeat until you get acceptable RSS
+---
+``` python
+def predict_price(area, weight, bias):
+    return weight*area + bias
+```
+``` python
+def update_weights(area, price_list, weight, bias, learning_rate):
+    weight_deriv = 0
+    bias_deriv = 0
+    companies = len(area)
+
+    for i in range(companies):
+        # Calculate partial derivatives
+        # -2x(y - (mx + b))
+        weight_deriv += -2*area[i] * (price_list[i]
+            - (weight*area[i] + bias))
+
+        # -2(y - (mx + b))
+        bias_deriv += -2*(price_list[i] - (weight*area[i] + bias))
+
+# We subtract because the derivatives point in direction of
+#    steepest ascent
+    weight -= (weight_deriv / companies) * learning_rate
+    bias -= (bias_deriv / companies) * learning_rate
+
+    return weight, bias
+```
+if loss is (y' - y)^2 and derivative is 2 (y' - y)
+---
+ # Summary
+* Dependent variable
+* Linearly separable
+* Pay attention to categorical data
+* One level of linear relationship
+* Avoid multiple features having same inter correlation
+* Optimize for RSS (Residual squared sum)
+* Normalize data
+---
+# Logistic Regression
+###Mutually exclusive Categorical variables
+* Probability and odd
+    * Fair coin probability of getting head 1/2
+    * Fair dice probability of chosen number 1/6
+        failing to get same number is 5/6
+
+        odd = p / (1-p)
+        = ( 1/6 ) / ( 5/6 )
+* Probability is between 0 to 1 and sum always sums up to 1
+---
+# Sigmoid (slight digression)
+!["Logit function"](images/logit_function.png)
+!["Sigmoid"](images/sigmoid.png)
+---
+!["Sigmoid"](images/logistic_regression_equation.png)
+Next is optimizing weights / coefficients to output the correct probability for the class.
+
+Here is how data would look like
+-------
+|Age    | Sex | Class | | *Survived*|
+|-------|-----|-------|-|---------|
+| 12    | M   | 1     | |    1    |
+| 23    | F   | 2     | |    1    |
+| 28    | M   | 3     | |    0    |
+---
+# Learning / Optimizing Weights
+* Cost function
+
+!["Cost function"](images/logistic_cost.png)
+* Notice that 1 / m takes mean
+* y**log and 1-y *\* log term will take care of either adding or subtracting
+the adjustment for weight.
+    * If y is one then first term is considered, second term will become zero
+    * If y is 0 then first term will become zero, second term is correction for weight
+    * Log term captures the probability and second term takes probability of event not occurring.
+* Follow similar training process that we used in linear regression with this cost function.
+---
+# *Key takeaway*
+* Regression outputs continues value and logistic regression deals with categorical values that are mutually exclusive.
+* Class ratio might be skewed so logistic regression works on probability of that event happening.
+* Logistic regression models over probability, hence uses logit / sigmoid function
+* Logistic regression is one type of classification.
+---
+class: center, middle
+        #Hands on
+---
+class: center, middle
+        #Thank you
+> @dileepbapat
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
